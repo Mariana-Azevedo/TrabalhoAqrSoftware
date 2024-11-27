@@ -14,7 +14,7 @@
                 <h2 class="title title-primary">welcome back!</h2>
                 <p class="description description-primary">To keep connected with us</p>
                 <p class="description description-primary">please login with your personal info</p>
-                <button id="signin" class="btn btn-primary">sign in</button>
+                <!-- <button id="signin" class="btn btn-primary">sign in</button> -->
             </div>    
             <div class="second-column">
                 <h2 class="title title-second">Etapa 1</h2>
