@@ -1,1 +1,10 @@
-br/ufrrj/Main.class
+br\ufrrj\domain\CriaPedidoEstagRT.class
+br\ufrrj\data\CamadaDados.class
+br\ufrrj\data\PedidoEstagMapper.class
+br\ufrrj\Main.class
+br\ufrrj\data\PedidoEstagDTO.class
+br\ufrrj\domain\EnderecoInvalidoEX.class
+br\ufrrj\data\ModalidadeEstagio.class
+br\ufrrj\domain\CargaHorariaExcedenteEX.class
+br\ufrrj\domain\CargaHorariaInsuficienteEX.class
+br\ufrrj\domain\IRAInsuficienteEX.class

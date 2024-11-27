@@ -1,31 +1,27 @@
-package org.example.domain;
+package br.ufrrj.serviceless.domain;
 
-import org.example.data.EstagioDTO;
-import org.example.data.PedidoEstagMapper;
+import br.ufrrj.data.PedidoEstagioDTO;
+import br.ufrrj.data.PedidoEstagMapper;
 
-public class CriaPedEstagRT {
+public class CriaPedidoEstagioRT {
 
-    public String verificaDadosDiscente(float ira, int cargaHoraria, String endereco) {
+    public void verificaDadosDiscente(float ira, int cargaHoraria, String endereco) {
         // Validação RN1: Carga Horária deve ser pelo menos 80 créditos
         if (cargaHoraria < 80) {
-            throw new CargaHorariaInsuficienteEX();
+            throw new CargaHorariaInsuficienteEX("O discente não cumpriu a carga horária minima de 80 horas");
         }
-
         // Validação RN2: IRA deve ser >= 6.0 ou os dois últimos IRAs >= 7.0
         if (ira < 6.0) {
-            throw new IRAInsuficienteEX();
+            throw new IRAInsuficienteEX("O discente não possui o IRA mínimo de 6.0");
         }
-
         // Validação do endereço
         if (endereco == null || endereco.trim().isEmpty()) {
-            throw new EnderecoInvalidoEX();
+            throw new EnderecoInvalidoEX("Endereço envidado pelo discente é invalido ou nulo");
         }
-
         // Se todas as condições forem satisfeitas
-        return "Dados validados com sucesso. O discente está apto.";
-    }
 
-    public String verificaDadosEstag(EstagioDTO dadosEstag) {
+    }
+    public void verificaDadosEstag(PedidoEstagioDTO dadosEstag) {
         // Verificar se algum campo obrigatório está vazio ou nulo
         if (dadosEstag.getNome() == null || dadosEstag.getNome().isEmpty()) {
             throw new IllegalArgumentException("O nome do discente não foi preenchido.");
@@ -54,15 +50,11 @@ public class CriaPedEstagRT {
         if (dadosEstag.getModalidadeEstagio() == null) {
             throw new IllegalArgumentException("A modalidade do estágio não foi selecionada.");
         }
-
         // Verificar a regra de negócio da carga horária semanal
         if (dadosEstag.getCargaHorariaSemanal() > 30) {
             throw new CargaHorariaExcedenteEX("A carga horária semanal excede o limite máximo de 30 horas.");
         }
-
         PedidoEstagMapper mapper = new PedidoEstagMapper();
         mapper.create(dadosEstag);
-        return "Todos os dados foram preenchidos corretamente e a regra de negócio foi atendida.";
-
     }
 }
