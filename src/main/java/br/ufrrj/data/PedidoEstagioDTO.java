@@ -1,5 +1,7 @@
 package br.ufrrj.data;
 
+import jdk.internal.icu.text.UTF16;
+
 public class PedidoEstagioDTO {
 
     private String nome;
@@ -10,7 +12,7 @@ public class PedidoEstagioDTO {
     private boolean primeiroEstagio;
     private String nomeEmpresa;
     private String enderecoEmpresa;
-    private ModalidadeEstagio modalidaEstagio;
+    private ModalidadeEstagio modalidadeEstagio;
     private int cargoHorariaSemanal;
     private String valorBolsa;
     private String resumoAtividades;
@@ -65,10 +67,11 @@ public class PedidoEstagioDTO {
         this.enderecoEmpresa = enderecoEmpresa;
     }
     public ModalidadeEstagio getModalidadeEstagio() {
-        return modalidaEstagio;
+        return modalidadeEstagio;
     }
-    public void setModalidadeEstagio(ModalidadeEstagio modalidaEstagio) {
-        this.modalidaEstagio = modalidaEstagio;
+
+    public void setModalidadeEstagio(ModalidadeEstagio modalidadeEstagio) {
+        this.modalidadeEstagio = modalidadeEstagio;
     }
     public int getCargaHorariaSemanal() {
         return cargoHorariaSemanal;
