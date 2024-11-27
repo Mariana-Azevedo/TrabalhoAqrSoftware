@@ -1,4 +1,4 @@
-package org.example.data;
+package br.ufrrj.data;
 
 public enum ModalidadeEstagio {
 
