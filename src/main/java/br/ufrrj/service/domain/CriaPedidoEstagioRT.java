@@ -8,6 +8,6 @@ public class CriaPedidoEstagioRT {
     public void criarPedidoEstagio(PedidoEstagioDTO dadosEstag){
 
         PedidoEstagMapper mapper = new PedidoEstagMapper();
-        mapper.create(dadosEstag);
+        mapper.criaPedido(dadosEstag);
     }
 }

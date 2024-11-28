@@ -5,6 +5,7 @@ import br.ufrrj.data.PedidoEstagMapper;
 
 public class CriaPedidoEstagioRT {
 
+    
     public void verificaDadosDiscente(float ira, int cargaHoraria, String endereco) {
         // Validação RN1: Carga Horária deve ser pelo menos 80 créditos
         if (cargaHoraria < 80) {
@@ -23,15 +24,7 @@ public class CriaPedidoEstagioRT {
     }
     public void verificaDadosEstag(PedidoEstagioDTO dadosEstag) {
         // Verificar se algum campo obrigatório está vazio ou nulo
-        if (dadosEstag.getNome() == null || dadosEstag.getNome().isEmpty()) {
-            throw new IllegalArgumentException("O nome do discente não foi preenchido.");
-        }
-        if (dadosEstag.getMatricula() == null || dadosEstag.getMatricula().isEmpty()) {
-            throw new IllegalArgumentException("A matrícula do discente não foi preenchida.");
-        }
-        if (dadosEstag.getEnderecoDiscente() == null || dadosEstag.getEnderecoDiscente().isEmpty()) {
-            throw new IllegalArgumentException("O endereço do discente não foi preenchido.");
-        }
+        
         if (dadosEstag.getNomeEmpresa() == null || dadosEstag.getNomeEmpresa().isEmpty()) {
             throw new IllegalArgumentException("O nome da empresa não foi preenchido.");
         }
@@ -55,6 +48,7 @@ public class CriaPedidoEstagioRT {
             throw new CargaHorariaExcedenteEX("A carga horária semanal excede o limite máximo de 30 horas.");
         }
         PedidoEstagMapper mapper = new PedidoEstagMapper();
-        mapper.create(dadosEstag);
+        mapper.criaPedido(dadosEstag);
     }
+
 }

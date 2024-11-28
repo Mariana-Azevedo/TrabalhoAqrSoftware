@@ -3,7 +3,7 @@ package br.ufrrj.service.domain;
 import br.ufrrj.data.PedidoEstagioDTO;
 import br.ufrrj.serviceless.domain.CargaHorariaExcedenteEX;
 import br.ufrrj.serviceless.domain.CargaHorariaInsuficienteEX;
-import br.ufrrj.serviceless.domain.CriaPedidoEstagioRT;
+import br.ufrrj.service.domain.CriaPedidoEstagioRT;
 import br.ufrrj.serviceless.domain.EnderecoInvalidoEX;
 import br.ufrrj.serviceless.domain.IRAInsuficienteEX;
 
@@ -30,15 +30,7 @@ public class CamadaServico {
 
     public void verificaDadosEstag(PedidoEstagioDTO dadosEstag) {
         // Verificar se algum campo obrigatório está vazio ou nulo
-        if (dadosEstag.getNome() == null || dadosEstag.getNome().isEmpty()) {
-            throw new IllegalArgumentException("O nome do discente não foi preenchido.");
-        }
-        if (dadosEstag.getMatricula() == null || dadosEstag.getMatricula().isEmpty()) {
-            throw new IllegalArgumentException("A matrícula do discente não foi preenchida.");
-        }
-        if (dadosEstag.getEnderecoDiscente() == null || dadosEstag.getEnderecoDiscente().isEmpty()) {
-            throw new IllegalArgumentException("O endereço do discente não foi preenchido.");
-        }
+        
         if (dadosEstag.getNomeEmpresa() == null || dadosEstag.getNomeEmpresa().isEmpty()) {
             throw new IllegalArgumentException("O nome da empresa não foi preenchido.");
         }

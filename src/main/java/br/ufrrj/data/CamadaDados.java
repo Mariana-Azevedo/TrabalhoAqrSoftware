@@ -8,7 +8,7 @@ public class CamadaDados {
 
     // Lista de estágios
     private List<PedidoEstagioDTO> listaDeEstagios;
-    private UserDTO admin = new UserDTO("admin","admin");
+    private UserDTO admin = new UserDTO("admin@gmail.com","admin");
     // Construtor privado para impedir instanciamento externo
     private CamadaDados() {
         listaDeEstagios = new ArrayList<>();
@@ -29,6 +29,7 @@ public class CamadaDados {
 
 
     public UserDTO getAdmin() {
+        System.out.format("validou");
         return admin;
     }
 }
