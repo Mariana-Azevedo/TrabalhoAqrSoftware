@@ -34,7 +34,19 @@ public class DadosDiscenteServelet extends HttpServlet {
         String endereco = request.getParameter("endereco");
 
         try{
-            roteiroPed.verificaDadosDiscente(ira, cargaHoraria, endereco);
+
+            if (cargaHoraria < 80) {
+                throw new CargaHorariaInsuficienteEX("O discente não cumpriu a carga horária minima de 80 horas");
+            }
+            // Validação RN2: IRA deve ser >= 6.0 ou os dois últimos IRAs >= 7.0
+            if (ira < 6.0) {
+                throw new IRAInsuficienteEX("O discente não possui o IRA mínimo de 6.0");
+            }
+            // Validação do endereço
+            if (endereco == null || endereco.trim().isEmpty()) {
+                throw new EnderecoInvalidoEX("Endereço envidado pelo discente é invalido ou nulo");
+            }
+            
             response.sendRedirect("/arquitetura-software/serviceless/final");
         }catch(CargaHorariaInsuficienteEX e){
             e.printStackTrace();

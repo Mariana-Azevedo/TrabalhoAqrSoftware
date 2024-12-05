@@ -3,6 +3,7 @@ package br.ufrrj.serviceless.view;
 
 import java.io.IOException;
 
+import br.ufrrj.data.UserMapper;
 import br.ufrrj.serviceless.domain.CriaPedidoEstagioRT;
 import br.ufrrj.serviceless.domain.IndentificarUserRT;
 import jakarta.servlet.RequestDispatcher;
@@ -33,7 +34,17 @@ public class UserLoginServelet extends HttpServlet {
 
         try{
 
-            roteiroUser.verificarUsuario(email, password);
+            if (email == null || email.isEmpty()) {
+            throw new Exception("O sistema informa que o email não foi informado.");
+            }
+            if (password == null || password.isEmpty()) {
+                throw new Exception("O sistema informa que a senha não foi informada.");
+            }
+
+            // Fluxo Alternativo 1: Usuário inválido
+            if (UserMapper.search(email,password)) {
+                throw new Exception("O sistema informa que o email ou senha é inválido.");
+            }
 
             response.sendRedirect("/arquitetura-software/serviceless/home");
 
